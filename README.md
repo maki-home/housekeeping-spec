@@ -4,8 +4,8 @@
 
 ```xml
 <dependency>
-    <groupId>am.ik.lab</groupId>
-    <artifactId>tweet-spec</artifactId>
+    <groupId>am.ik.home</groupId>
+    <artifactId>housekeeping-spec</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <exclusions>
         <exclusion>
