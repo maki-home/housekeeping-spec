@@ -19,9 +19,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/MissionListResponse'
+                $ref: '#/components/schemas/MissionListResponse'
       operationId: get-missions
     delete:
       summary: Remove Missions
