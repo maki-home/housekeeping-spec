@@ -1,8 +1,8 @@
 {
-  "apiPackage": "am.ik.lab.tweet.spec",
-  "modelPackage": "am.ik.lab.tweet.spec",
-  "groupId": "am.ik.lab",
-  "artifactId": "tweet-spec",
+  "apiPackage": "am.ik.home.housekeeping.spec",
+  "modelPackage": "am.ik.home.housekeeping.spec",
+  "groupId": "am.ik.home",
+  "artifactId": "housekeeping-spec",
   "dateLibrary": "java8",
   "delegatePattern": false,
   "java8": true,
