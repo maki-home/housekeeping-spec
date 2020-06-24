@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  title: Tweeter API
+  version: 0.1.0-SNAPSHOT
+  description: Tweeter API
+  license:
+    name: Apache 2.0
+servers:
+- url: 'http://localhost:8080'
+paths:
+  '/tweets/{uuid}':
+    get:
+      summary: Get a tweet
+      tags:
+      - Tweet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TweetResponse'
+              examples:
+                Sample:
+                  value:
+                    uuid: 2bf80fec-ea55-4d05-b3ea-392bcec7483e
+                    text: 'Hi!'
+                    createdAt: '2020-05-07T13:38:57.366Z'
+      operationId: get-tweets-uuid
+      description: Get the tweet that has the given uuid
+    parameters:
+    - schema:
+        type: string
+        format: uuid
+      name: uuid
+      in: path
+      required: true
+      description: UUID
+    delete:
+      summary: Delete a tweet
+      operationId: delete-tweets-uuid
+      responses:
+        '204':
+          description: No Content
+      description: Delete the tweet that has the given uuid
+      tags:
+      - Tweet
+  /tweets:
+    post:
+      summary: Create a tweet
+      operationId: post-tweets
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL for the created tweet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TweetResponse'
+              examples:
+                Sample:
+                  value:
+                    text: Hello
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TweetRequest'
+            examples:
+              Sample:
+                value:
+                  text: Hello
+        description: Tweet Information
+      description: Crate a tweet with the given Information.
+      tags:
+      - Tweet
+      parameters: []
+    get:
+      summary: List tweets
+      operationId: get-tweets
+      description: List tweets
+      tags:
+      - Tweet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TweetResponse'
+              examples:
+                Sample:
+                  value:
+                  - uuid: 52b6e221-77f9-4e1f-bdf7-2dcf09c44b81
+                    text: Hello3
+                    createdAt: '2020-05-07T13:39:57.366Z'
+                  - uuid: 2bf80fec-ea55-4d05-b3ea-392bcec7483e
+                    text: 'Hi!'
+                    createdAt: '2020-05-07T13:38:57.366Z'
+                  - uuid: 5b74be91-5c13-4b0e-908d-f3fa9aa70b26
+                    text: Hello2
+                    createdAt: '2020-05-07T13:37:57.366Z'
+                  - uuid: 127f679c-b4e3-450b-bb3f-b5b7f32fc6a0
+                    text: Hello1
+                    createdAt: '2020-05-07T13:36:57.366Z'
+      parameters: []
+
+components:
+  schemas:
+    TweetResponse:
+      title: TweetResponse
+      type: object
+      x-examples:
+        Sample:
+          uuid: d188c790-8c28-4507-b8cd-e422d6073a93
+          text: 'Hello World!'
+          createdAt: '2020-05-06T05:38:55.297765Z'
+      description: The reponse of Tweet
+      properties:
+        uuid:
+          type: string
+          description: UUID
+          format: uuid
+        text:
+          type: string
+          description: |
+            Tweet text
+        createdAt:
+          type: string
+          description: created date time
+          format: date-time
+      required:
+      - uuid
+      - text
+      - createdAt
+      x-tags:
+      - Tweet
+    TweetRequest:
+      title: TweetRequest
+      type: object
+      description: The request of Tweet
+      x-examples:
+        Example:
+          text: 'Hello World!'
+      properties:
+        text:
+          type: string
+          description: |
+            Tweet text
+          minLength: 1
+          maxLength: 128
+      required:
+      - text
+      x-tags:
+      - Tweet
