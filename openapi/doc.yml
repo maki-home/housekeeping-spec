@@ -35,6 +35,8 @@ paths:
             schema:
               $ref: '#/components/schemas/MissionRemoveRequest'
       description: ''
+      tags:
+        - Mission
     put:
       summary: Register Missions
       operationId: put-missions
@@ -46,6 +48,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MissionRegisterRequest'
+      tags:
+        - Mission
 components:
   schemas:
     MissionRegisterRequest:
