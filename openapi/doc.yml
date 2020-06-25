@@ -63,6 +63,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MissionNewRequest'
+      tags:
+        - Mission
 components:
   schemas:
     MissionRegisterRequest:
