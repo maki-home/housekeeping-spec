@@ -48,6 +48,21 @@ paths:
               $ref: '#/components/schemas/MissionRegisterRequest'
       tags:
         - Mission
+    post:
+      summary: New Mission
+      operationId: post-missions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MissionResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MissionNewRequest'
 components:
   schemas:
     MissionRegisterRequest:
@@ -74,15 +89,21 @@ components:
     MissionListResponse:
       title: MissionListRequest
       type: array
-      x-examples:
-        example-1: {}
       x-tags:
         - Mission
       items:
         $ref: '#/components/schemas/MissionResponse'
     MissionResponse:
-      title: Mission
+      title: MissionResponse
       type: object
+      x-examples:
+        example-1:
+          id: 1
+          place: 洗面所
+          lastDate: '2020-04-15'
+          cycle: 14
+      x-tags:
+        - Mission
       properties:
         id:
           type: integer
@@ -95,14 +116,6 @@ components:
         cycle:
           type: integer
           format: int32
-      x-examples:
-        example-1:
-          id: 1
-          place: 洗面所
-          lastDate: '2020-04-15'
-          cycle: 14
-      x-tags:
-        - Mission
     MissionRemoveRequest:
       title: MissionDeleteRequest
       type: object
@@ -119,3 +132,12 @@ components:
             format: int32
       x-tags:
         - Mission
+    MissionNewRequest:
+      title: MissionNewRequest
+      type: object
+      properties:
+        place:
+          type: string
+        cycle:
+          type: integer
+          format: int32
