@@ -1,0 +1,14 @@
+{
+  "apiPackage": "am.ik.home.housekeeping.client",
+  "invokerPackage": "am.ik.home.housekeeping.client",
+  "modelPackage": "am.ik.home.housekeeping.client",
+  "groupId": "am.ik.home",
+  "artifactId": "housekeeping-client",
+  "library": "webclient",
+  "dateLibrary": "java8",
+  "java8": true,
+  "reactive": false,
+  "serializableModel": true,
+  "useGzipFeature": true,
+  "useRxJava2": false
+}
